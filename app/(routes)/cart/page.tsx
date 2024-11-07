@@ -2,8 +2,8 @@
 
 import Container from "@/components/Container";
 import useCart from "@/hooks/useCart";
-import CartItem from "./CartItem";
-import Summary from "./Summary";
+import CartItem from "./components/CartItem";
+import Summary from "./components/Summary";
 import { Suspense } from "react";
 import Spinner from "@/components/Spinner";
 

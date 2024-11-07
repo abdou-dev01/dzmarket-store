@@ -9,13 +9,13 @@ import Spinner from "@/components/Spinner";
 
 const CartPage = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const cart = useCart();
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   if (!isMounted) return <Spinner />;
-  const cart = useCart();
   return (
     <Suspense fallback={<Spinner />}>
       <div className="bg-white">

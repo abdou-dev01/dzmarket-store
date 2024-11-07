@@ -6,7 +6,7 @@ import ProductList from "@/components/ProductList";
 
 const Page = async () => {
   const products = await getProducts({});
-  const billboard = await getBillboard("a0c8cb37-93ac-4831-b8c4-ff210d148116");
+  const billboard = await getBillboard("cc5183ee-ec5f-4f62-8d36-a86a5efcef9f");
   return (
     <Container>
       <div className="space-y-10 pb-10">

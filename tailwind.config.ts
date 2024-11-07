@@ -15,5 +15,6 @@ const config: Config = {
     },
   },
   plugins: [],
+  safelist: ["animate-spin", "w-20", "h-20", "z-50", "bg-opacity-20"],
 };
 export default config;

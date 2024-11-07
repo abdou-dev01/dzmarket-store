@@ -1,3 +1,5 @@
+"use server";
+
 import { Product } from "@/types";
 import queryString from "query-string";
 

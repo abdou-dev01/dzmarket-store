@@ -5,9 +5,13 @@ import getSizes from "@/actions/getSizes";
 import Billboard from "@/components/Billboard";
 import Container from "@/components/Container";
 import EmptyState from "@/components/EmptyState";
-import Filter from "@/components/Filter";
-import MobileFilter from "@/components/MobileFilter";
 import ProductCard from "@/components/ProductCard";
+import dynamic from "next/dynamic";
+
+const Filter = dynamic(() => import("@/components/Filter"), { ssr: false });
+const MobileFilter = dynamic(() => import("@/components/MobileFilter"), {
+  ssr: false,
+});
 
 interface CategoryPageProps {
   params: Promise<{ categoryId: string }>;

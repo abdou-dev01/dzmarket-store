@@ -6,6 +6,8 @@ import NavbarAction from "./NavbarAction";
 
 const Navbar = async () => {
   const categories = await getCategories();
+
+  if (!categories) return <div>There is no categories!</div>;
   return (
     <div className="border-b">
       <Container>

@@ -4,10 +4,17 @@ import Container from "@/components/Container";
 import useCart from "@/hooks/useCart";
 import CartItem from "./components/CartItem";
 import Summary from "./components/Summary";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Spinner from "@/components/Spinner";
 
 const CartPage = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return <Spinner />;
   const cart = useCart();
   return (
     <Suspense fallback={<Spinner />}>

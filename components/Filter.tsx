@@ -5,7 +5,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import queryString from "query-string";
 import Button from "./Button";
 import { cn } from "@/lib/utils";
-import { useEffect } from "react";
 
 interface FilterProps {
   valueKey: string;
@@ -25,17 +24,15 @@ const Filter: React.FC<FilterProps> = ({ valueKey, name, data }) => {
 
     if (current[valueKey] === id) query[valueKey] = null;
 
-    useEffect(() => {
-      const url = queryString.stringifyUrl(
-        {
-          url: window.location.href,
-          query,
-        },
-        { skipNull: true }
-      );
+    const url = queryString.stringifyUrl(
+      {
+        url: window.location.href,
+        query,
+      },
+      { skipNull: true }
+    );
 
-      router.push(url);
-    }, [router, window.location.href]);
+    router.push(url);
   };
 
   return (

@@ -10,22 +10,21 @@ import MobileFilter from "@/components/MobileFilter";
 import ProductCard from "@/components/ProductCard";
 
 interface CategoryPageProps {
-  params: {
-    categoryId: string;
-  };
-  searchParams: {
-    colorId: string;
-    sizeId: string;
-  };
+  params: Promise<{ categoryId: string }>;
+  searchParams: Promise<{
+    colorId?: string;
+    sizeId?: string;
+  }>;
 }
 
 const CategoryPage: React.FC<CategoryPageProps> = async ({
   params,
   searchParams,
 }) => {
-  const categoryId = params?.categoryId || "";
-  const colorId = searchParams?.colorId || "";
-  const sizeId = searchParams?.sizeId || "";
+  const { categoryId } = await params;
+  const search = await searchParams;
+  const colorId = search?.colorId || "";
+  const sizeId = search?.sizeId || "";
   const products = await getProducts({
     categoryId: categoryId,
     colorId: colorId,

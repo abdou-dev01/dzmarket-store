@@ -1,11 +1,11 @@
+"use server";
+
 import { Category } from "@/types";
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/category`;
 
 const getCategories = async (): Promise<Category[]> => {
-  const response = await fetch(URL, {
-    method: "GET",
-  });
+  const response = await fetch(URL);
 
   if (!response.ok) {
     console.log("Error fetching categories:", response.status);

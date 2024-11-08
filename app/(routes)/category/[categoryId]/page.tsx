@@ -6,18 +6,15 @@ import MobileFilter from "@/components/MobileFilter";
 import ProductCard from "@/components/ProductCard";
 import { Category, Color, Product, Size } from "@/types";
 
-interface CategoryPageProps {
-  params: Promise<{ categoryId: string }>;
-  searchParams: Promise<{
-    colorId?: string;
-    sizeId?: string;
-  }>;
-}
+// interface CategoryPageProps {
+//   params: Promise<{ categoryId: string }>;
+//   searchParams: Promise<{
+//     colorId?: string;
+//     sizeId?: string;
+//   }>;
+// }
 
-const CategoryPage: React.FC<CategoryPageProps> = async ({
-  params,
-  searchParams,
-}) => {
+const CategoryPage = async ({}) => {
   // const products = await getProducts({
   //   categoryId: categoryId,
   //   colorId: colorId,

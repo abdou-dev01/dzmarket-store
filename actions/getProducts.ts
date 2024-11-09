@@ -23,7 +23,7 @@ const getProducts = async (query: Query): Promise<Product[]> => {
     },
   });
 
-  const response = await fetch(url);
+  const response = await fetch(url, { cache: "no-store" });
 
   const res = await response.json();
 

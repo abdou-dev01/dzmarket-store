@@ -4,7 +4,6 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import Spinner from "@/components/Spinner";
 
 const ModalProvider = () => {
   const PreviewModal = dynamic(() => import("@/components/PreviewModal"), {
@@ -16,7 +15,7 @@ const ModalProvider = () => {
     setIsMounted(true);
   }, []);
 
-  if (!isMounted) return <Spinner />;
+  if (!isMounted) return null;
 
   return <PreviewModal />;
 };

@@ -3,26 +3,31 @@
 import Button from "@/components/Button";
 import Currency from "@/components/Currency";
 import useCart from "@/hooks/useCart";
+import { Product } from "@/types";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
-const Summary = () => {
-  const items = useCart((state) => state.items);
+interface SummaryProps {
+  items: Product[];
+  isPaid?: boolean;
+}
+
+const Summary: React.FC<SummaryProps> = ({ items, isPaid }) => {
   const searchParams = useSearchParams();
-  const removeAllItems = useCart((state) => state.removeAll);
+  // const removeAllItems = useCart((state) => state.removeAll);
 
   useEffect(() => {
     if (searchParams.get("success")) {
       toast.success("Payment Completed");
-      removeAllItems();
+      // removeAllItems();
     }
 
     if (searchParams.get("canceled")) {
       toast.error("Something went wrong");
     }
-  }, [searchParams, removeAllItems]);
+  }, [searchParams]);
 
   const totalPrice = items.reduce((total, item) => {
     return total + Number(item.price);
@@ -45,13 +50,16 @@ const Summary = () => {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button
-        disabled={items.length === 0}
-        onClick={onCheckout}
-        className="w-full mt-6"
-      >
-        Chekout
-      </Button>
+      {isPaid ||
+        (items.length > 0 && (
+          <Button
+            disabled={items.length === 0}
+            onClick={onCheckout}
+            className="w-full mt-6"
+          >
+            Chekout
+          </Button>
+        ))}
     </div>
   );
 };

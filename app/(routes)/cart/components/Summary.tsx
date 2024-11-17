@@ -2,7 +2,6 @@
 
 import Button from "@/components/Button";
 import Currency from "@/components/Currency";
-import useCart from "@/hooks/useCart";
 import { Product } from "@/types";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
